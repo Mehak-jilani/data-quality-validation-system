@@ -1,0 +1,514 @@
+{
+  "dataset": {
+    "file": "bank.csv",
+    "rows": 11162,
+    "columns": 17,
+    "memory_mb": 6.67
+  },
+  "generated_at": "2026-10-05T19:53:48",
+  "columns": {
+    "age": {
+      "dtype": "int64",
+      "missing_count": 0,
+      "missing_pct": 0.0,
+      "unique_count": 76,
+      "cardinality_ratio": 0.0068,
+      "is_id_like": false,
+      "pandas_dtype": "int64",
+      "logical_type": "integer",
+      "is_mixed_type": false,
+      "semantic_meaning": null,
+      "statistics": {
+        "mean": 41.2319,
+        "std": 11.9134,
+        "min": 18.0,
+        "max": 95.0,
+        "quartiles": {
+          "25%": 32.0,
+          "50%": 39.0,
+          "75%": 49.0
+        },
+        "skew": 0.8628,
+        "iqr_outlier_count": 171
+      }
+    },
+    "job": {
+      "dtype": "object",
+      "missing_count": 0,
+      "missing_pct": 0.0,
+      "unique_count": 12,
+      "cardinality_ratio": 0.0011,
+      "is_id_like": false,
+      "pandas_dtype": "object",
+      "logical_type": "str",
+      "is_mixed_type": false,
+      "type_composition": {
+        "str": 1.0
+      },
+      "semantic_meaning": null,
+      "top_values": {
+        "management": 2566,
+        "blue-collar": 1944,
+        "technician": 1823,
+        "admin.": 1334,
+        "services": 923,
+        "retired": 778,
+        "self-employed": 405,
+        "student": 360,
+        "unemployed": 357,
+        "entrepreneur": 328
+      }
+    },
+    "marital": {
+      "dtype": "object",
+      "missing_count": 0,
+      "missing_pct": 0.0,
+      "unique_count": 3,
+      "cardinality_ratio": 0.0003,
+      "is_id_like": false,
+      "pandas_dtype": "object",
+      "logical_type": "str",
+      "is_mixed_type": false,
+      "type_composition": {
+        "str": 1.0
+      },
+      "semantic_meaning": null,
+      "top_values": {
+        "married": 6351,
+        "single": 3518,
+        "divorced": 1293
+      }
+    },
+    "education": {
+      "dtype": "object",
+      "missing_count": 0,
+      "missing_pct": 0.0,
+      "unique_count": 4,
+      "cardinality_ratio": 0.0004,
+      "is_id_like": false,
+      "pandas_dtype": "object",
+      "logical_type": "str",
+      "is_mixed_type": false,
+      "type_composition": {
+        "str": 1.0
+      },
+      "semantic_meaning": null,
+      "top_values": {
+        "secondary": 5476,
+        "tertiary": 3689,
+        "primary": 1500,
+        "unknown": 497
+      }
+    },
+    "default": {
+      "dtype": "object",
+      "missing_count": 0,
+      "missing_pct": 0.0,
+      "unique_count": 2,
+      "cardinality_ratio": 0.0002,
+      "is_id_like": false,
+      "pandas_dtype": "object",
+      "logical_type": "str",
+      "is_mixed_type": false,
+      "type_composition": {
+        "str": 1.0
+      },
+      "semantic_meaning": null,
+      "top_values": {
+        "no": 10994,
+        "yes": 168
+      }
+    },
+    "balance": {
+      "dtype": "int64",
+      "missing_count": 0,
+      "missing_pct": 0.0,
+      "unique_count": 3805,
+      "cardinality_ratio": 0.3409,
+      "is_id_like": false,
+      "pandas_dtype": "int64",
+      "logical_type": "integer",
+      "is_mixed_type": false,
+      "semantic_meaning": null,
+      "statistics": {
+        "mean": 1528.5385,
+        "std": 3225.4133,
+        "min": -6847.0,
+        "max": 81204.0,
+        "quartiles": {
+          "25%": 122.0,
+          "50%": 550.0,
+          "75%": 1708.0
+        },
+        "skew": 8.2246,
+        "iqr_outlier_count": 1055
+      }
+    },
+    "housing": {
+      "dtype": "object",
+      "missing_count": 0,
+      "missing_pct": 0.0,
+      "unique_count": 2,
+      "cardinality_ratio": 0.0002,
+      "is_id_like": false,
+      "pandas_dtype": "object",
+      "logical_type": "str",
+      "is_mixed_type": false,
+      "type_composition": {
+        "str": 1.0
+      },
+      "semantic_meaning": null,
+      "top_values": {
+        "no": 5881,
+        "yes": 5281
+      }
+    },
+    "loan": {
+      "dtype": "object",
+      "missing_count": 0,
+      "missing_pct": 0.0,
+      "unique_count": 2,
+      "cardinality_ratio": 0.0002,
+      "is_id_like": false,
+      "pandas_dtype": "object",
+      "logical_type": "str",
+      "is_mixed_type": false,
+      "type_composition": {
+        "str": 1.0
+      },
+      "semantic_meaning": null,
+      "top_values": {
+        "no": 9702,
+        "yes": 1460
+      }
+    },
+    "contact": {
+      "dtype": "object",
+      "missing_count": 0,
+      "missing_pct": 0.0,
+      "unique_count": 3,
+      "cardinality_ratio": 0.0003,
+      "is_id_like": false,
+      "pandas_dtype": "object",
+      "logical_type": "str",
+      "is_mixed_type": false,
+      "type_composition": {
+        "str": 1.0
+      },
+      "semantic_meaning": null,
+      "top_values": {
+        "cellular": 8042,
+        "unknown": 2346,
+        "telephone": 774
+      }
+    },
+    "day": {
+      "dtype": "int64",
+      "missing_count": 0,
+      "missing_pct": 0.0,
+      "unique_count": 31,
+      "cardinality_ratio": 0.0028,
+      "is_id_like": false,
+      "pandas_dtype": "int64",
+      "logical_type": "integer",
+      "is_mixed_type": false,
+      "semantic_meaning": null,
+      "statistics": {
+        "mean": 15.658,
+        "std": 8.4207,
+        "min": 1.0,
+        "max": 31.0,
+        "quartiles": {
+          "25%": 8.0,
+          "50%": 15.0,
+          "75%": 22.0
+        },
+        "skew": 0.1113,
+        "iqr_outlier_count": 0
+      }
+    },
+    "month": {
+      "dtype": "object",
+      "missing_count": 0,
+      "missing_pct": 0.0,
+      "unique_count": 12,
+      "cardinality_ratio": 0.0011,
+      "is_id_like": false,
+      "pandas_dtype": "object",
+      "logical_type": "str",
+      "is_mixed_type": false,
+      "type_composition": {
+        "str": 1.0
+      },
+      "semantic_meaning": null,
+      "top_values": {
+        "may": 2824,
+        "aug": 1519,
+        "jul": 1514,
+        "jun": 1222,
+        "nov": 943,
+        "apr": 923,
+        "feb": 776,
+        "oct": 392,
+        "jan": 344,
+        "sep": 319
+      }
+    },
+    "duration": {
+      "dtype": "int64",
+      "missing_count": 0,
+      "missing_pct": 0.0,
+      "unique_count": 1428,
+      "cardinality_ratio": 0.1279,
+      "is_id_like": false,
+      "pandas_dtype": "int64",
+      "logical_type": "integer",
+      "is_mixed_type": false,
+      "semantic_meaning": null,
+      "statistics": {
+        "mean": 371.9938,
+        "std": 347.1284,
+        "min": 2.0,
+        "max": 3881.0,
+        "quartiles": {
+          "25%": 138.0,
+          "50%": 255.0,
+          "75%": 496.0
+        },
+        "skew": 2.1437,
+        "iqr_outlier_count": 636
+      }
+    },
+    "campaign": {
+      "dtype": "int64",
+      "missing_count": 0,
+      "missing_pct": 0.0,
+      "unique_count": 36,
+      "cardinality_ratio": 0.0032,
+      "is_id_like": false,
+      "pandas_dtype": "int64",
+      "logical_type": "integer",
+      "is_mixed_type": false,
+      "semantic_meaning": null,
+      "statistics": {
+        "mean": 2.5084,
+        "std": 2.7221,
+        "min": 1.0,
+        "max": 63.0,
+        "quartiles": {
+          "25%": 1.0,
+          "50%": 2.0,
+          "75%": 3.0
+        },
+        "skew": 5.5456,
+        "iqr_outlier_count": 601
+      }
+    },
+    "pdays": {
+      "dtype": "int64",
+      "missing_count": 0,
+      "missing_pct": 0.0,
+      "unique_count": 472,
+      "cardinality_ratio": 0.0423,
+      "is_id_like": false,
+      "pandas_dtype": "int64",
+      "logical_type": "integer",
+      "is_mixed_type": false,
+      "semantic_meaning": null,
+      "statistics": {
+        "mean": 51.3304,
+        "std": 108.7583,
+        "min": -1.0,
+        "max": 854.0,
+        "quartiles": {
+          "25%": -1.0,
+          "50%": -1.0,
+          "75%": 20.75
+        },
+        "skew": 2.45,
+        "iqr_outlier_count": 2750
+      }
+    },
+    "previous": {
+      "dtype": "int64",
+      "missing_count": 0,
+      "missing_pct": 0.0,
+      "unique_count": 34,
+      "cardinality_ratio": 0.003,
+      "is_id_like": false,
+      "pandas_dtype": "int64",
+      "logical_type": "integer",
+      "is_mixed_type": false,
+      "semantic_meaning": null,
+      "statistics": {
+        "mean": 0.8326,
+        "std": 2.292,
+        "min": 0.0,
+        "max": 58.0,
+        "quartiles": {
+          "25%": 0.0,
+          "50%": 0.0,
+          "75%": 1.0
+        },
+        "skew": 7.3353,
+        "iqr_outlier_count": 1258
+      }
+    },
+    "poutcome": {
+      "dtype": "object",
+      "missing_count": 0,
+      "missing_pct": 0.0,
+      "unique_count": 4,
+      "cardinality_ratio": 0.0004,
+      "is_id_like": false,
+      "pandas_dtype": "object",
+      "logical_type": "str",
+      "is_mixed_type": false,
+      "type_composition": {
+        "str": 1.0
+      },
+      "semantic_meaning": null,
+      "top_values": {
+        "unknown": 8326,
+        "failure": 1228,
+        "success": 1071,
+        "other": 537
+      }
+    },
+    "deposit": {
+      "dtype": "object",
+      "missing_count": 0,
+      "missing_pct": 0.0,
+      "unique_count": 2,
+      "cardinality_ratio": 0.0002,
+      "is_id_like": false,
+      "pandas_dtype": "object",
+      "logical_type": "str",
+      "is_mixed_type": false,
+      "type_composition": {
+        "str": 1.0
+      },
+      "semantic_meaning": null,
+      "top_values": {
+        "no": 5873,
+        "yes": 5289
+      }
+    }
+  },
+  "correlation_matrix": {
+    "age": {
+      "age": 1.0,
+      "balance": 0.1123,
+      "day": -0.0008,
+      "duration": 0.0002,
+      "campaign": -0.0053,
+      "pdays": 0.0028,
+      "previous": 0.0202
+    },
+    "balance": {
+      "age": 0.1123,
+      "balance": 1.0,
+      "day": 0.0105,
+      "duration": 0.0224,
+      "campaign": -0.0139,
+      "pdays": 0.0174,
+      "previous": 0.0308
+    },
+    "day": {
+      "age": -0.0008,
+      "balance": 0.0105,
+      "day": 1.0,
+      "duration": -0.0185,
+      "campaign": 0.137,
+      "pdays": -0.0772,
+      "previous": -0.059
+    },
+    "duration": {
+      "age": 0.0002,
+      "balance": 0.0224,
+      "day": -0.0185,
+      "duration": 1.0,
+      "campaign": -0.0416,
+      "pdays": -0.0274,
+      "previous": -0.0267
+    },
+    "campaign": {
+      "age": -0.0053,
+      "balance": -0.0139,
+      "day": 0.137,
+      "duration": -0.0416,
+      "campaign": 1.0,
+      "pdays": -0.1027,
+      "previous": -0.0497
+    },
+    "pdays": {
+      "age": 0.0028,
+      "balance": 0.0174,
+      "day": -0.0772,
+      "duration": -0.0274,
+      "campaign": -0.1027,
+      "pdays": 1.0,
+      "previous": 0.5073
+    },
+    "previous": {
+      "age": 0.0202,
+      "balance": 0.0308,
+      "day": -0.059,
+      "duration": -0.0267,
+      "campaign": -0.0497,
+      "pdays": 0.5073,
+      "previous": 1.0
+    }
+  },
+  "rules": {
+    "suspicious_columns": [
+      {
+        "column": "balance",
+        "issues": [
+          "heavy outliers (1055 rows via IQR)"
+        ]
+      },
+      {
+        "column": "duration",
+        "issues": [
+          "heavy outliers (636 rows via IQR)"
+        ]
+      },
+      {
+        "column": "campaign",
+        "issues": [
+          "heavy outliers (601 rows via IQR)"
+        ]
+      },
+      {
+        "column": "pdays",
+        "issues": [
+          "heavy outliers (2750 rows via IQR)"
+        ]
+      },
+      {
+        "column": "previous",
+        "issues": [
+          "heavy outliers (1258 rows via IQR)"
+        ]
+      }
+    ],
+    "pii_columns": [
+      {
+        "column": "age",
+        "pii_type": "dob",
+        "reason": "name_keyword"
+      },
+      {
+        "column": "contact",
+        "pii_type": "phone",
+        "reason": "name_keyword"
+      }
+    ],
+    "warnings": []
+  },
+  "visuals": {
+    "outlier_distribution": "visuals/outlier_distribution.png",
+    "correlation_heatmap": "visuals/correlation_heatmap.png"
+  }
+}
