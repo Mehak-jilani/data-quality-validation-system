@@ -47,6 +47,8 @@ Python · Pandas · NumPy · Matplotlib · Google Colab · GitHub
 3. Run all cells — the engine auto-detects the file separator, profiles every column, and writes `profiling_report.json` + visualisations to the `results/` folder.
 
 ## 👤 Author
-**Mehak Jilani** | Data Analyst
-CadetX UK Work Experience
-linkedin.com/in/mehak-jilani
+
+**Mehak Jilani** — Data Analyst (Volunteer), CadetX UK Work Experience
+
+[🔗 LinkedIn Profile](https://www.linkedin.com/in/mehak-jilani)
+
