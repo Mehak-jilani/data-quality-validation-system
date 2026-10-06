@@ -1,5 +1,5 @@
 ## Automated Data Quality & Validation System
-### CadetX Virtual Work Experience — Junior BI Analyst Track
+### CadetX Work Experience — Data Analyst
 
 ## 📌 Project Overview
 An end-to-end automated data quality engine that profiles raw datasets, detects hidden data quality issues, and generates structured reports **before** any cleaning or ML happens. This repository tracks all 4 modules of the CadetX project:
