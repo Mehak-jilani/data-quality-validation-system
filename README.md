@@ -5,7 +5,7 @@
 An end-to-end automated data quality engine that profiles raw datasets, detects hidden data quality issues, and generates structured reports **before** any cleaning or ML happens. This repository tracks all 4 modules of the CadetX project:
 
 - **Module 1 — Advanced Data Profiling & Metadata Intelligence** ✅ *(completed)*
-- **Module 2 — Automated Data Cleaning & Transformation** 🔄 *(in progress — KNN imputation + fuzzy duplicate detection complete)*
+- **Module 2 — Automated Data Cleaning & Transformation** 🔄 *(in progress — cleaning + KNN imputation + fuzzy duplicates + scaling/encoding complete)*
 - Module 3 — AI-Powered Data Validation *(upcoming)*
 - Module 4 — End-to-End Pipeline, Docker & Automation *(upcoming)*
 
@@ -37,17 +37,18 @@ Python · Pandas · NumPy · Matplotlib · scikit-learn · Google Colab · GitHu
 
 **Cleaning engine results (Bank Marketing dataset, 11,162 rows):**
 
-| Action | What it fixes | Rows affected |
+| Action | What it does | Rows affected |
 |---|---|---|
 | **Sentinel fix** | `pdays = -1` ("never contacted") → real missing value | 8,324 |
 | **Invalid value fix** | Negative `balance` (impossible) → missing | 688 |
 | **Outlier capping** | IQR winsorization on 5 flagged columns | 3,504 |
 | **KNN imputation** | Missing values filled via KNNImputer (5 neighbours) | 9,012 |
 | **Fuzzy duplicate detection** | Composite profile matching (age+job+marital+balance) | 960 groups / 1,560 rows |
+| **Scaling + encoding** | StandardScaler (7 numeric) + one-hot (9 categorical) → ML-ready | 11,162 × 43 cols |
 
 **Quality Score: 91.84 → 95.16 (+3.32)** · sentinel 8,324→0 · negatives 688→0 · outliers 6,471→171 (–97%)
 
-*More Module 2 components (scaling/encoding) coming in the next update.*
+*Module 2 output:* `cleaned_data.csv` (coming in next update) · `ml_ready_data.csv` (ML-ready, committed)
 
 ## 📂 Repository Contents
 | File | Description |
@@ -56,7 +57,8 @@ Python · Pandas · NumPy · Matplotlib · scikit-learn · Google Colab · GitHu
 | `profiling_report.json` | Full structured profiling report (per-column stats + rules) |
 | `outlier_distribution.png` | Boxplot of numeric columns — outlier analysis |
 | `correlation_heatmap.png` | Feature correlation matrix |
-| `Module2_Data_Cleaning.ipynb` | Cleaning engine (sentinel fix, outlier capping, KNN imputation, fuzzy duplicates) |
+| `Module2_Data_Cleaning.ipynb` | Cleaning engine (sentinel fix, outlier capping, KNN imputation, fuzzy duplicates, scaling/encoding) |
+| `ml_ready_data.csv` | ML-ready dataset — 11,162 rows × 43 columns (scaled + one-hot encoded) |
 
 ## ▶️ How to Run
 1. Open the Module notebook in Google Colab.
