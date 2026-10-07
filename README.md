@@ -5,7 +5,7 @@
 An end-to-end automated data quality engine that profiles raw datasets, detects hidden data quality issues, and generates structured reports **before** any cleaning or ML happens. This repository tracks all 4 modules of the CadetX project:
 
 - **Module 1 — Advanced Data Profiling & Metadata Intelligence** ✅ *(completed)*
-- Module 2 — Automated Data Cleaning & Transformation *(in progress)*
+- **Module 2 — Automated Data Cleaning & Transformation** 🔄 *(in progress — KNN imputation + fuzzy duplicate detection complete)*
 - Module 3 — AI-Powered Data Validation *(upcoming)*
 - Module 4 — End-to-End Pipeline, Docker & Automation *(upcoming)*
 
@@ -17,7 +17,7 @@ An end-to-end automated data quality engine that profiles raw datasets, detects 
 *   **Target variable:** `deposit` (yes/no)
 
 ## 🛠️ Tools & Technologies
-Python · Pandas · NumPy · Matplotlib · Google Colab · GitHub
+Python · Pandas · NumPy · Matplotlib · scikit-learn · Google Colab · GitHub
 
 ## 🔍 Module 1 — Key Features Implemented
 1. **Metadata Extraction Engine** — infers logical data types, detects mixed-type columns and their type composition, classifies semantic meaning (email / phone / date / ID patterns).
@@ -33,6 +33,22 @@ Python · Pandas · NumPy · Matplotlib · Google Colab · GitHub
 *   **"Unknown" categories:** `education` (497), `contact` (2,346), `poutcome` (8,326 = 75% of data).
 *   **The twist:** the dataset shows **0% missing values** — yet hides severe quality issues. Surface-level cleanliness ≠ clean data.
 
+## 🧹 Module 2 — Data Cleaning (in progress)
+
+**Cleaning engine results (Bank Marketing dataset, 11,162 rows):**
+
+| Action | What it fixes | Rows affected |
+|---|---|---|
+| **Sentinel fix** | `pdays = -1` ("never contacted") → real missing value | 8,324 |
+| **Invalid value fix** | Negative `balance` (impossible) → missing | 688 |
+| **Outlier capping** | IQR winsorization on 5 flagged columns | 3,504 |
+| **KNN imputation** | Missing values filled via KNNImputer (5 neighbours) | 9,012 |
+| **Fuzzy duplicate detection** | Composite profile matching (age+job+marital+balance) | 960 groups / 1,560 rows |
+
+**Quality Score: 91.84 → 95.16 (+3.32)** · sentinel 8,324→0 · negatives 688→0 · outliers 6,471→171 (–97%)
+
+*More Module 2 components (scaling/encoding) coming in the next update.*
+
 ## 📂 Repository Contents
 | File | Description |
 |---|---|
@@ -40,15 +56,15 @@ Python · Pandas · NumPy · Matplotlib · Google Colab · GitHub
 | `profiling_report.json` | Full structured profiling report (per-column stats + rules) |
 | `outlier_distribution.png` | Boxplot of numeric columns — outlier analysis |
 | `correlation_heatmap.png` | Feature correlation matrix |
+| `Module2_Data_Cleaning.ipynb` | Cleaning engine (sentinel fix, outlier capping, KNN imputation, fuzzy duplicates) |
 
 ## ▶️ How to Run
-1. Open `Module1_Data_Profiling_Engine.ipynb` in Google Colab.
+1. Open the Module notebook in Google Colab.
 2. Upload the Bank Marketing CSV when prompted (Cell 1).
-3. Run all cells — the engine auto-detects the file separator, profiles every column, and writes `profiling_report.json` + visualisations to the `results/` folder.
+3. Run all cells — the engine auto-detects the file separator and writes all outputs.
 
 ## 👤 Author
 
 **Mehak Jilani** — Data Analyst (Volunteer), CadetX UK Work Experience
 
 [🔗 LinkedIn Profile](https://www.linkedin.com/in/mehak-jilani)
-
