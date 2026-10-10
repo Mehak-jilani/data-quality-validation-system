@@ -1,0 +1,26 @@
+{
+  "dataset": "bank.csv",
+  "rows": 11162,
+  "quality_score_before": 91.84,
+  "quality_score_after": 95.16,
+  "actions": [
+    {
+      "action": "sentinel_to_nan",
+      "column": "pdays",
+      "detail": "-1 means never contacted before; converted to real missing value",
+      "rows_affected": 8324
+    },
+    {
+      "action": "invalid_to_nan",
+      "column": "balance",
+      "detail": "impossible negative balances set to missing",
+      "rows_affected": 688
+    },
+    {
+      "action": "outlier_capping",
+      "column": "balance, duration, campaign, pdays, previous",
+      "detail": "extreme values capped at IQR fences (winsorization)",
+      "rows_affected": 3504
+    }
+  ]
+}
