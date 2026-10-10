@@ -5,7 +5,7 @@
 An end-to-end automated data quality engine that profiles raw datasets, detects hidden data quality issues, and generates structured reports **before** any cleaning or ML happens. This repository tracks all 4 modules of the CadetX project:
 
 - **Module 1 — Advanced Data Profiling & Metadata Intelligence** ✅ *(completed)*
-- **Module 2 — Automated Data Cleaning & Transformation** 🔄 *(in progress — cleaning + KNN imputation + fuzzy duplicates + scaling/encoding complete)*
+- **Module 2 — Automated Data Cleaning & Transformation** ✅ *(completed: cleaning, KNN imputation, fuzzy duplicates, scaling/encoding, quality scoring)*
 - Module 3 — AI-Powered Data Validation *(upcoming)*
 - Module 4 — End-to-End Pipeline, Docker & Automation *(upcoming)*
 
@@ -33,7 +33,7 @@ Python · Pandas · NumPy · Matplotlib · scikit-learn · Google Colab · GitHu
 *   **"Unknown" categories:** `education` (497), `contact` (2,346), `poutcome` (8,326 = 75% of data).
 *   **The twist:** the dataset shows **0% missing values** — yet hides severe quality issues. Surface-level cleanliness ≠ clean data.
 
-## 🧹 Module 2 — Data Cleaning (in progress)
+## 🧹 Module 2 — Data Cleaning ✅
 
 **Cleaning engine results (Bank Marketing dataset, 11,162 rows):**
 
@@ -48,7 +48,7 @@ Python · Pandas · NumPy · Matplotlib · scikit-learn · Google Colab · GitHu
 
 **Quality Score: 91.84 → 95.16 (+3.32)** · sentinel 8,324→0 · negatives 688→0 · outliers 6,471→171 (–97%)
 
-*Module 2 output:* `cleaned_data.csv` (coming in next update) · `ml_ready_data.csv` (ML-ready, committed)
+*Module 2 outputs:* `cleaned_data.csv` + `cleaning_log.json` (audit trail) · `ml_ready_data.csv` (ML-ready)
 
 ## 📂 Repository Contents
 | File | Description |
@@ -58,6 +58,8 @@ Python · Pandas · NumPy · Matplotlib · scikit-learn · Google Colab · GitHu
 | `outlier_distribution.png` | Boxplot of numeric columns — outlier analysis |
 | `correlation_heatmap.png` | Feature correlation matrix |
 | `Module2_Data_Cleaning.ipynb` | Cleaning engine (sentinel fix, outlier capping, KNN imputation, fuzzy duplicates, scaling/encoding) |
+| `cleaned_data.csv` | Cleaned dataset — 11,162 rows (sentinel fixed, outliers capped) |
+| `cleaning_log.json` | Audit trail of every cleaning action + before/after quality scores |
 | `ml_ready_data.csv` | ML-ready dataset — 11,162 rows × 43 columns (scaled + one-hot encoded) |
 
 ## ▶️ How to Run
