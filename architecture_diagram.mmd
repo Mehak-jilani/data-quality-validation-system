@@ -1,0 +1,32 @@
+%% Architecture diagram — bank data quality pipeline
+%% GitHub-compatible Mermaid source
+flowchart TB
+    raw["📄 bank.csv<br/><b>RAW DATA</b><br/><small>11,162 rows · deceptive — 0% missing</small>"]
+    profiler["🔍 <b>MODULE 1: PROFILER</b><br/><small>Metadata · Rules · PII</small>"]
+    cleaner["🧹 <b>MODULE 2: CLEANER</b><br/><small>Sentinels · KNN · Capping</small>"]
+    validator["🤖 <b>MODULE 3: VALIDATOR</b><br/><small>Rules 8/8 · Isolation F.</small>"]
+    pipeline["⚙️ <b>MODULE 4: PIPELINE</b><br/><small>CLI · YAML · Tests · Docker</small>"]
+
+    raw --> profiler --> cleaner --> validator --> pipeline
+
+    profiler -.-> report1["profiling_report.json<br/><small>+ 2 PNGs</small>"]
+    cleaner -.-> report2["cleaned_data.csv<br/><small>+ cleaning_log.json<br/>91.84 → 95.16</small>"]
+    validator -.-> report3["validation_report.json<br/><small>Health 97.99 / 100</small>"]
+
+    config["config.yaml<br/><small>settings</small>"] -.-> pipeline
+    docker["🐳 Docker<br/><small>deployment</small>"] -.-> pipeline
+
+    classDef raw fill:#eef1f5,stroke:#64748b,color:#0f172a,stroke-width:2px;
+    classDef module fill:#12304a,stroke:#12304a,color:#ffffff,stroke-width:2px;
+    classDef highlight fill:#d9653b,stroke:#b94b27,color:#ffffff,stroke-width:3px;
+    classDef output fill:#fff7ed,stroke:#f59e0b,color:#7c2d12,stroke-width:1.5px;
+    classDef badge fill:#f8fafc,stroke:#94a3b8,color:#334155,stroke-width:1.5px;
+
+    class raw raw;
+    class profiler,cleaner,validator module;
+    class pipeline highlight;
+    class report1,report2,report3 output;
+    class config,docker badge;
+
+    linkStyle 0,1,2,3 stroke:#d9653b,stroke-width:3px;
+    linkStyle 4,5,6,7,8 stroke:#94a3b8,stroke-width:1.5px,stroke-dasharray:5 5;
