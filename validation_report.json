@@ -1,0 +1,66 @@
+{
+  "dataset": "cleaned_data.csv",
+  "rows": 11162,
+  "rule_validation": {
+    "total_rules": 8,
+    "rules_passed": 8,
+    "total_violations": 0,
+    "details": [
+      {
+        "column": "age",
+        "rule": "age must be 18-100",
+        "severity": "high",
+        "violations": 0
+      },
+      {
+        "column": "balance",
+        "rule": "balance must be >= 0",
+        "severity": "high",
+        "violations": 0
+      },
+      {
+        "column": "duration",
+        "rule": "call duration must be > 0",
+        "severity": "medium",
+        "violations": 0
+      },
+      {
+        "column": "campaign",
+        "rule": "contact attempts must be >= 1",
+        "severity": "high",
+        "violations": 0
+      },
+      {
+        "column": "day",
+        "rule": "day must be 1-31",
+        "severity": "high",
+        "violations": 0
+      },
+      {
+        "column": "marital",
+        "rule": "marital must be married/single/divorced",
+        "severity": "high",
+        "violations": 0
+      },
+      {
+        "column": "education",
+        "rule": "education must be valid level",
+        "severity": "medium",
+        "violations": 0
+      },
+      {
+        "column": "deposit",
+        "rule": "target must be yes/no",
+        "severity": "high",
+        "violations": 0
+      }
+    ]
+  },
+  "ai_anomaly_detection": {
+    "model": "IsolationForest",
+    "contamination": 0.02,
+    "anomalies_found": 224,
+    "anomaly_pct": 2.01
+  },
+  "dataset_health_score": 97.99
+}
