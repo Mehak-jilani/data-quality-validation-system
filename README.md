@@ -5,8 +5,8 @@
 An end-to-end automated data quality engine that profiles raw datasets, detects hidden data quality issues, and generates structured reports **before** any cleaning or ML happens. This repository tracks all 4 modules of the CadetX project:
 
 - **Module 1 — Advanced Data Profiling & Metadata Intelligence** ✅ *(completed)*
-- **Module 2 — Automated Data Cleaning & Transformation** ✅ *(completed: cleaning, KNN imputation, fuzzy duplicates, scaling/encoding, quality scoring)*
-- Module 3 — AI-Powered Data Validation *(upcoming)*
+- **Module 2 — Automated Data Cleaning & Transformation** ✅ *(completed)*
+- **Module 3 — AI-Powered Data Validation** ✅ *(completed)*
 - Module 4 — End-to-End Pipeline, Docker & Automation *(upcoming)*
 
 ## 📊 Dataset
@@ -50,6 +50,19 @@ Python · Pandas · NumPy · Matplotlib · scikit-learn · Google Colab · GitHu
 
 *Module 2 outputs:* `cleaned_data.csv` + `cleaning_log.json` (audit trail) · `ml_ready_data.csv` (ML-ready)
 
+## 🤖 Module 3 — AI-Powered Validation ✅
+
+**Two-layer validation on the cleaned dataset:**
+
+| Layer | What it does | Result |
+|---|---|---|
+| **Rule-based engine** | 8 business rules with severity levels (age 18–100, balance ≥ 0, valid categories, day 1–31, target yes/no) | **8/8 PASSED — 0 violations** (confirms Module 2 cleaning worked) |
+| **AI anomaly detection** | Isolation Forest (scikit-learn) flags records that pass all rules but are statistically unusual | **224 anomalies (2.01%)** — e.g. 82-yr customer with 844-min call |
+
+**Dataset Health Score: 97.99 / 100**
+
+*Module 3 output:* `validation_report.json` (rules result + anomaly summary + health score)
+
 ## 📂 Repository Contents
 | File | Description |
 |---|---|
@@ -61,11 +74,14 @@ Python · Pandas · NumPy · Matplotlib · scikit-learn · Google Colab · GitHu
 | `cleaned_data.csv` | Cleaned dataset — 11,162 rows (sentinel fixed, outliers capped) |
 | `cleaning_log.json` | Audit trail of every cleaning action + before/after quality scores |
 | `ml_ready_data.csv` | ML-ready dataset — 11,162 rows × 43 columns (scaled + one-hot encoded) |
+| `Module3_Data_Validation.ipynb` | Validation engine (rule checks + Isolation Forest anomaly detection) |
+| `validation_report.json` | Validation results — 8/8 rules, 224 anomalies, health 97.99/100 |
+| `architecture_diagram.png` / `.mmd` | System architecture (4-module pipeline flow) + Mermaid source |
 
 ## ▶️ How to Run
 1. Open the Module notebook in Google Colab.
-2. Upload the Bank Marketing CSV when prompted (Cell 1).
-3. Run all cells — the engine auto-detects the file separator and writes all outputs.
+2. Upload the required CSV when prompted (Module 1–2: `bank.csv`; Module 3: `cleaned_data.csv`).
+3. Run all cells — each module writes its outputs.
 
 ## 👤 Author
 
