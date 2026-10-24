@@ -1,0 +1,17 @@
+# Pipeline configuration — settings yahan se control hoti hain
+input_file: "bank.csv"
+output_dir: "results"
+
+profiling:
+  outlier_threshold_pct: 5.0
+
+cleaning:
+  sentinel_columns:
+    pdays: -1
+  cap_columns: ["balance", "duration", "campaign", "pdays", "previous"]
+
+validation:
+  isolation_forest_contamination: 0.02
+  rules:
+    age: [18, 100]
+    day: [1, 31]
