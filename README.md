@@ -76,30 +76,36 @@ Python · Pandas · NumPy · Matplotlib · scikit-learn · PyYAML · Pytest · D
 *Pipeline output: Dataset Health Score **97.99/100***
 
 ## 🏗️ System Architecture
-
 ```mermaid
-flowchart TB
-    raw["📄 bank.csv<br/><b>RAW DATA</b><br/>11,162 rows · deceptive — 0% missing"]
-    profiler["🔍 <b>MODULE 1: PROFILER</b><br/>Metadata · Rules · PII"]
-    cleaner["🧹 <b>MODULE 2: CLEANER</b><br/>Sentinels · KNN · Capping"]
-    validator["🤖 <b>MODULE 3: VALIDATOR</b><br/>Rules 8/8 · Isolation F."]
-    pipeline["⚙️ <b>MODULE 4: PIPELINE</b><br/>CLI · YAML · Tests · Docker"]
-    raw --> profiler --> cleaner --> validator --> pipeline
-    profiler -.-> report1["profiling_report.json + 2 PNGs"]
-    cleaner -.-> report2["cleaned_data.csv + cleaning_log.json<br/>91.84 → 95.16"]
-    validator -.-> report3["validation_report.json<br/>Health 97.99 / 100"]
-    config["config.yaml — settings"] -.-> pipeline
-    docker["🐳 Docker — deployment"] -.-> pipeline
-    classDef raw fill:#eef1f5,stroke:#64748b,color:#0f172a,stroke-width:2px
-    classDef module fill:#12304a,stroke:#12304a,color:#ffffff,stroke-width:2px
-    classDef highlight fill:#d9653b,stroke:#b94b27,color:#ffffff,stroke-width:3px
-    classDef output fill:#fff7ed,stroke:#f59e0b,color:#7c2d12,stroke-width:1.5px
-    classDef badge fill:#f8fafc,stroke:#94a3b8,color:#334155,stroke-width:1.5px
-    class raw raw
-    class profiler,cleaner,validator module
-    class pipeline highlight
-    class report1,report2,report3 output
-    class config,docker badge
+graph TD
+    %% Nodes definition
+    raw[Raw CSV Data <br> 11,162 rows]
+    profiler[MODULE 1: PROFILER <br> Metadata & Rules]
+    cleaner[MODULE 2: CLEANER <br> Sentinels & KNN]
+    validator[MODULE 3: VALIDATOR <br> Business Rules]
+    pipeline[MODULE 4: PIPELINE <br> CLI & Docker Tests]
+    
+    config[config.yaml <br> Settings]
+    docker[Docker Deployment]
+
+    %% Flow / Connections
+    raw --> profiler
+    profiler --> cleaner
+    cleaner --> validator
+    validator --> pipeline
+    
+    config -.-> pipeline
+    docker -.-> pipeline
+
+    %% Styling
+    style raw fill:#f9f9f9,stroke:#333,stroke-width:2px
+    style profiler fill:#d1e7dd,stroke:#0f5132,stroke-width:2px
+    style cleaner fill:#cfe2ff,stroke:#084298,stroke-width:2px
+    style validator fill:#f8d7da,stroke:#842029,stroke-width:2px
+    style pipeline fill:#fef3c7,stroke:#92400e,stroke-width:2px
+    style config fill:#e2e3e5,stroke:#383d41,stroke-width:1.5px
+    style docker fill:#e2e3e5,stroke:#383d41,stroke-width:1.5px
+
 
 ## 📂 Repository Contents
 | File | Description |
