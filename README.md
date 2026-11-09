@@ -77,35 +77,25 @@ Python · Pandas · NumPy · Matplotlib · scikit-learn · PyYAML · Pytest · D
 
 ## 🏗️ System Architecture
 ```mermaid
+## 🏗️ System Architecture
+
+```mermaid
 graph TD
-    %% Nodes definition
-    raw[Raw CSV Data <br> 11,162 rows]
-    profiler[MODULE 1: PROFILER <br> Metadata & Rules]
-    cleaner[MODULE 2: CLEANER <br> Sentinels & KNN]
-    validator[MODULE 3: VALIDATOR <br> Business Rules]
-    pipeline[MODULE 4: PIPELINE <br> CLI & Docker Tests]
+    raw["Raw CSV Data (11,162 rows)"] --> profiler["MODULE 1: PROFILER"]
+    profiler --> cleaner["MODULE 2: CLEANER"]
+    cleaner --> validator["MODULE 3: VALIDATOR"]
+    validator --> pipeline["MODULE 4: PIPELINE"]
     
-    config[config.yaml <br> Settings]
-    docker[Docker Deployment]
+    config["config.yaml"] -.-> pipeline
+    docker["Docker Deployment"] -.-> pipeline
 
-    %% Flow / Connections
-    raw --> profiler
-    profiler --> cleaner
-    cleaner --> validator
-    validator --> pipeline
-    
-    config -.-> pipeline
-    docker -.-> pipeline
-
-    %% Styling
     style raw fill:#f9f9f9,stroke:#333,stroke-width:2px
     style profiler fill:#d1e7dd,stroke:#0f5132,stroke-width:2px
     style cleaner fill:#cfe2ff,stroke:#084298,stroke-width:2px
     style validator fill:#f8d7da,stroke:#842029,stroke-width:2px
     style pipeline fill:#fef3c7,stroke:#92400e,stroke-width:2px
-    style config fill:#e2e3e5,stroke:#383d41,stroke-width:1.5px
-    style docker fill:#e2e3e5,stroke:#383d41,stroke-width:1.5px
-
+    style config fill:#e2e3e5,stroke:#383d41,stroke-width:1px
+    style docker fill:#e2e3e5,stroke:#383d41,stroke-width:1px
 
 ## 📂 Repository Contents
 | File | Description |
