@@ -103,7 +103,7 @@ flowchart TB
 
 ## 📂 Repository Contents
 | File | Description |
-|---|---|
+| --- | --- |
 | `Module1_Data_Profiling_Engine.ipynb` | Profiling engine code (Google Colab notebook) |
 | `profiling_report.json` | Full structured profiling report (per-column stats + rules) |
 | `outlier_distribution.png` | Boxplot of numeric columns — outlier analysis |
@@ -114,12 +114,18 @@ flowchart TB
 | `ml_ready_data.csv` | ML-ready dataset — 11,162 rows × 43 columns (scaled + one-hot encoded) |
 | `Module3_Data_Validation.ipynb` | Validation engine (rule checks + Isolation Forest anomaly detection) |
 | `validation_report.json` | Validation results — 8/8 rules, 224 anomalies, health 97.99/100 |
-| `architecture_diagram.png` / `.mmd` | System architecture (4-module pipeline flow) + Mermaid source |
+| `architecture_diagram.png` / `.mmd` | System architecture (rendered PNG + Mermaid source) |
+| `Module4_Pipeline.ipynb` | Module 4 notebook (config, pipeline run, pytest, Dockerfile) |
+| `pipeline.py` | End-to-end CLI pipeline script |
+| `config.yaml` | Pipeline configuration (thresholds, rules, settings) |
+| `test_pipeline.py` | Pytest suite — 6/6 tests passed |
+| `Dockerfile` | Container definition for the pipeline |
+| `requirements.txt` | Python dependencies |
+| `docker_demo.png` | Docker container run output (GitHub Codespaces) |
+| `final_presentation.pdf` | 5-slide project demo deck |
 
-## ▶️ How to Run
-1. Open the Module notebook in Google Colab.
-2. Upload the required CSV when prompted (Module 1–2: `bank.csv`; Module 3: `cleaned_data.csv`).
-3. Run all cells — each module writes its outputs.
+▶️ How to Run
+Notebooks (Colab): Open module notebook → upload required CSV (Modules 1–2:  bank.csv ; Module 3:  cleaned_data.csv ) → run all cells. Pipeline:  python pipeline.py --input bank.csv --config config.yaml  · Tests:  pytest -q  · Docker:  docker build -t dq-pipeline . && docker run --rm dq-pipeline
 
 ## 👤 Author
 
