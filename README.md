@@ -7,7 +7,7 @@ An end-to-end automated data quality engine that profiles raw datasets, detects 
 - **Module 1 — Advanced Data Profiling & Metadata Intelligence** ✅ *(completed)*
 - **Module 2 — Automated Data Cleaning & Transformation** ✅ *(completed)*
 - **Module 3 — AI-Powered Data Validation** ✅ *(completed)*
-- Module 4 — End-to-End Pipeline, Docker & Automation *(upcoming)*
+- **Module 4 — End-to-End Pipeline, Docker & Automation** ✅ *(completed)*
 
 ## 📊 Dataset
 **Bank Marketing Dataset (UCI Machine Learning Repository)**
@@ -17,25 +17,23 @@ An end-to-end automated data quality engine that profiles raw datasets, detects 
 *   **Target variable:** `deposit` (yes/no)
 
 ## 🛠️ Tools & Technologies
-Python · Pandas · NumPy · Matplotlib · scikit-learn · Google Colab · GitHub
+Python · Pandas · NumPy · Matplotlib · scikit-learn · PyYAML · Pytest · Docker · Google Colab · GitHub
 
-## 🔍 Module 1 — Key Features Implemented
+## 🔍 Module 1 — Data Profiling ✅
 1. **Metadata Extraction Engine** — infers logical data types, detects mixed-type columns and their type composition, classifies semantic meaning (email / phone / date / ID patterns).
 2. **Profiling Engine** — missing-value matrix, dtype consistency, unique value & cardinality analysis, ID-like column detection, full numeric statistics (mean, std, quartiles, skew, IQR outliers).
 3. **Profiling Visualisations** — outlier distribution (boxplot) and correlation heatmap, generated backend-side as PNG.
 4. **Rule Engine** — flags suspicious columns using threshold rules (>50% missingness, mixed types, ID-like cardinality, heavy outliers >5% of rows).
 5. **PII Detection** — automatically flags potential Personally Identifiable Information (detected: `age` → dob, `contact` → phone).
 
-## 🚀 Module 1 — Key Findings
+**Key findings:**
 *   **5 suspicious columns flagged:** `balance` (1,055 outliers), `duration` (636), `campaign` (601), `pdays` (2,750), `previous` (1,258) via IQR rule.
 *   **Negative balances:** `balance` minimum is **-6,847** — impossible for a bank account, indicating data errors.
-*   **Sentinel value trap:** `pdays = -1` means "never contacted before" — it is a **category disguised as a number**, polluting 25%+ of rows as fake outliers.
+*   **Sentinel value trap:** `pdays = -1` means "never contacted before" — a **category disguised as a number**, polluting 25%+ of rows as fake outliers.
 *   **"Unknown" categories:** `education` (497), `contact` (2,346), `poutcome` (8,326 = 75% of data).
 *   **The twist:** the dataset shows **0% missing values** — yet hides severe quality issues. Surface-level cleanliness ≠ clean data.
 
 ## 🧹 Module 2 — Data Cleaning ✅
-
-**Cleaning engine results (Bank Marketing dataset, 11,162 rows):**
 
 | Action | What it does | Rows affected |
 |---|---|---|
@@ -48,11 +46,9 @@ Python · Pandas · NumPy · Matplotlib · scikit-learn · Google Colab · GitHu
 
 **Quality Score: 91.84 → 95.16 (+3.32)** · sentinel 8,324→0 · negatives 688→0 · outliers 6,471→171 (–97%)
 
-*Module 2 outputs:* `cleaned_data.csv` + `cleaning_log.json` (audit trail) · `ml_ready_data.csv` (ML-ready)
+*Outputs:* `cleaned_data.csv` + `cleaning_log.json` (audit trail) · `ml_ready_data.csv` (ML-ready)
 
 ## 🤖 Module 3 — AI-Powered Validation ✅
-
-**Two-layer validation on the cleaned dataset:**
 
 | Layer | What it does | Result |
 |---|---|---|
@@ -61,7 +57,49 @@ Python · Pandas · NumPy · Matplotlib · scikit-learn · Google Colab · GitHu
 
 **Dataset Health Score: 97.99 / 100**
 
-*Module 3 output:* `validation_report.json` (rules result + anomaly summary + health score)
+*Output:* `validation_report.json` (rules result + anomaly summary + health score)
+
+## ⚙️ Module 4 — Production Pipeline ✅
+
+**One command runs everything:**
+
+    python pipeline.py --input bank.csv --config config.yaml
+
+| Component | Purpose |
+|---|---|
+| `pipeline.py` | End-to-end CLI: profile → clean → validate, with structured logging |
+| `config.yaml` | YAML-driven settings — thresholds/rules without touching code |
+| `test_pipeline.py` | Pytest suite — **6/6 tests passed** (caught a real bug pre-release) |
+| `Dockerfile` + `requirements.txt` | Containerized, reproducible environment |
+| `docker_demo.png` | Pipeline executed inside Docker (GitHub Codespaces) |
+
+*Pipeline output: Dataset Health Score **97.99/100***
+
+## 🏗️ System Architecture
+
+```mermaid
+flowchart TB
+    raw["📄 bank.csv<br/><b>RAW DATA</b><br/>11,162 rows · deceptive — 0% missing"]
+    profiler["🔍 <b>MODULE 1: PROFILER</b><br/>Metadata · Rules · PII"]
+    cleaner["🧹 <b>MODULE 2: CLEANER</b><br/>Sentinels · KNN · Capping"]
+    validator["🤖 <b>MODULE 3: VALIDATOR</b><br/>Rules 8/8 · Isolation F."]
+    pipeline["⚙️ <b>MODULE 4: PIPELINE</b><br/>CLI · YAML · Tests · Docker"]
+    raw --> profiler --> cleaner --> validator --> pipeline
+    profiler -.-> report1["profiling_report.json + 2 PNGs"]
+    cleaner -.-> report2["cleaned_data.csv + cleaning_log.json<br/>91.84 → 95.16"]
+    validator -.-> report3["validation_report.json<br/>Health 97.99 / 100"]
+    config["config.yaml — settings"] -.-> pipeline
+    docker["🐳 Docker — deployment"] -.-> pipeline
+    classDef raw fill:#eef1f5,stroke:#64748b,color:#0f172a,stroke-width:2px
+    classDef module fill:#12304a,stroke:#12304a,color:#ffffff,stroke-width:2px
+    classDef highlight fill:#d9653b,stroke:#b94b27,color:#ffffff,stroke-width:3px
+    classDef output fill:#fff7ed,stroke:#f59e0b,color:#7c2d12,stroke-width:1.5px
+    classDef badge fill:#f8fafc,stroke:#94a3b8,color:#334155,stroke-width:1.5px
+    class raw raw
+    class profiler,cleaner,validator module
+    class pipeline highlight
+    class report1,report2,report3 output
+    class config,docker badge
 
 ## 📂 Repository Contents
 | File | Description |
