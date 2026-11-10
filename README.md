@@ -77,9 +77,6 @@ Python · Pandas · NumPy · Matplotlib · scikit-learn · PyYAML · Pytest · D
 
 ## 🏗️ System Architecture
 ```mermaid
-## 🏗️ System Architecture
-
-```mermaid
 graph TD
     raw["Raw CSV Data (11,162 rows)"] --> profiler["MODULE 1: PROFILER"]
     profiler --> cleaner["MODULE 2: CLEANER"]
@@ -96,6 +93,7 @@ graph TD
     style pipeline fill:#fef3c7,stroke:#92400e,stroke-width:2px
     style config fill:#e2e3e5,stroke:#383d41,stroke-width:1px
     style docker fill:#e2e3e5,stroke:#383d41,stroke-width:1px
+
 
 ## 📂 Repository Contents
 | File | Description |
