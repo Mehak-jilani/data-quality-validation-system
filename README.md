@@ -76,24 +76,8 @@ Python · Pandas · NumPy · Matplotlib · scikit-learn · PyYAML · Pytest · D
 *Pipeline output: Dataset Health Score **97.99/100***
 
 ## 🏗️ System Architecture
-```mermaid
-graph TD
-    raw["Raw CSV Data (11,162 rows)"] --> profiler["MODULE 1: PROFILER"]
-    profiler --> cleaner["MODULE 2: CLEANER"]
-    cleaner --> validator["MODULE 3: VALIDATOR"]
-    validator --> pipeline["MODULE 4: PIPELINE"]
-    
-    config["config.yaml"] -.-> pipeline
-    docker["Docker Deployment"] -.-> pipeline
 
-    style raw fill:#f9f9f9,stroke:#333,stroke-width:2px
-    style profiler fill:#d1e7dd,stroke:#0f5132,stroke-width:2px
-    style cleaner fill:#cfe2ff,stroke:#084298,stroke-width:2px
-    style validator fill:#f8d7da,stroke:#842029,stroke-width:2px
-    style pipeline fill:#fef3c7,stroke:#92400e,stroke-width:2px
-    style config fill:#e2e3e5,stroke:#383d41,stroke-width:1px
-    style docker fill:#e2e3e5,stroke:#383d41,stroke-width:1px
-
+![System Architecture](architecture_diagram.png)
 
 ## 📂 Repository Contents
 | File | Description |
